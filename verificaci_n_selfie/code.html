@@ -1,0 +1,145 @@
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'outline-variant': '#ccc3d5', 'on-surface': '#131b2e', 'surface-container-highest': '#dae2fd', 'secondary': '#964900', 'on-error': '#ffffff', 'inverse-primary': '#d3bbff', 'tertiary-container': '#005439', 'surface-container-lowest': '#ffffff', 'surface-container': '#eaedff', 'on-secondary-fixed-variant': '#723600', 'on-secondary': '#ffffff', 'error': '#ba1a1a', 'tertiary': '#003b27', 'surface-dim': '#d2d9f4', 'primary-container': '#5a24b1', 'outline': '#7b7485', 'secondary-fixed-dim': '#ffb787', 'on-tertiary-fixed': '#002114', 'on-primary-fixed': '#250059', 'on-tertiary-container': '#00d294', 'on-error-container': '#93000a', 'secondary-container': '#fd8a30', 'on-primary-fixed-variant': '#5821af', 'inverse-surface': '#283044', 'surface-tint': '#703fc8', 'primary-fixed': '#ebddff', 'background': '#faf8ff', 'on-secondary-container': '#642e00', 'on-tertiary-fixed-variant': '#005237', 'surface-variant': '#dae2fd', 'on-secondary-fixed': '#311300', 'error-container': '#ffdad6', 'on-surface-variant': '#4a4453', 'on-primary-container': '#c7aaff', 'primary': '#420092', 'surface-container-low': '#f2f3ff', 'surface': '#faf8ff', 'on-background': '#131b2e', 'on-primary': '#ffffff', 'secondary-fixed': '#ffdcc7', 'primary-fixed-dim': '#d3bbff', 'inverse-on-surface': '#eef0ff', 'tertiary-fixed-dim': '#2de0a1', 'tertiary-fixed': '#57febc', 'on-tertiary': '#ffffff', 'surface-container-high': '#e2e7ff', 'surface-bright': '#faf8ff' }, borderRadius: { 'DEFAULT': '1rem', 'lg': '2rem', 'xl': '3rem', 'full': '9999px' }, spacing: { 'container-max': '1280px', 'stack-lg': '48px', 'margin-mobile': '16px', 'stack-md': '24px', 'gutter': '24px', 'base': '8px', 'stack-sm': '12px', 'margin-desktop': '64px' }, fontFamily: { 'label-sm': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Hanken Grotesk'], 'headline-lg': ['Hanken Grotesk'], 'body-sm': ['Inter'], 'body-lg': ['Inter'], 'headline-lg-mobile': ['Hanken Grotesk'], 'body-md': ['Inter'], 'display-lg': ['Hanken Grotesk'] }, fontSize: { 'label-sm': ['12px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }], 'label-md': ['14px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '600' }], 'headline-md': ['24px', { lineHeight: '32px', fontWeight: '600' }], 'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-sm': ['14px', { lineHeight: '20px', fontWeight: '400' }], 'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }], 'headline-lg-mobile': ['28px', { lineHeight: '36px', fontWeight: '600' }], 'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }], 'display-lg': ['48px', { lineHeight: '56px', letterSpacing: '-0.02em', fontWeight: '700' }] } } } };</script><style>@layer base { body { -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } </style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-stack-sm"><div class="flex items-center gap-stack-sm"><button aria-label="Regresar" class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-on-surface text-[24px]">arrow_back</span></button><div class="flex items-center gap-stack-sm"><img alt="logo localmente.png" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLtw1iIdTU25EBaFsm4xqybUNsWdC4TJC68ZbuRxfEsD9YL0IRDmgfWs37dzagj4cGX2AxI--ZWfnD3QXAsiI98_xTLAy0L-3bGR0z3TU0pfsr6An6ekfUfBn3sPaCzvrc51yOHpPBjWlYTiAcugsDixwH73IfeUUYcKZKhCxzWWjQzApbUpjoPzEu_AbQhmUOUEnNPWwu1rEnLfmzO1I-pqo1i7WqbwsSouGXzZW4AH_Gqs1SbniNssCjxaWEc2Kmu6VX3Gvl1f"/><span class="font-headline-md text-headline-md text-on-surface truncate max-w-[180px]">Reconocimiento Facial</span></div></div><div class="flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLslDy91IMUJuCq9gxzVBSubpeCXqketjbl8r1yGpBJoEIcw_ZewE6Pf68qfUK8zfTH3YCYFkVIqcB2PDC28HOXnXV1_CCyxu2MITSWpQxAibW0mBxt0Ev7T0F8RKhb9XtTq5HWKZNDKGAZqfEmygh1jtJl-gHliOdEq7qyIpCdSxzwiylRk6zM3qYzIdHgByB4M0bjSdWaag3ZL7up0-cMVpkj1y_fwOJWRn4A39tyj1qenVfJLB-6kmAE"/></div></div></header><main class="relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin-mobile pb-safe">
+<!-- Header/Context Section -->
+<div class="flex flex-col gap-base mt-stack-md text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Validación Facial</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
+            Coloca tu rostro dentro del óvalo. Mantén una expresión neutra y buena iluminación.
+        </p>
+</div>
+<!-- Camera Viewport Area -->
+<div class="relative mt-stack-lg flex justify-center items-center overflow-hidden">
+<!-- Living Background Glow -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary rounded-full blur-[80px] animate-pulse"></div>
+</div>
+<!-- The Scanner Container -->
+<div class="relative w-full aspect-square max-w-[320px] flex justify-center items-center">
+<!-- Rotating Progress Ring (SVG) -->
+<svg class="absolute inset-0 w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest" cx="50" cy="50" fill="transparent" r="48" stroke="currentColor" stroke-width="1.5"></circle>
+<circle class="text-primary transition-all duration-700 ease-out" cx="50" cy="50" fill="transparent" id="progress-ring" r="48" stroke="currentColor" stroke-dasharray="301.59" stroke-dashoffset="301.59" stroke-linecap="round" stroke-width="2.5"></circle>
+</svg>
+<!-- Oval Mask / Face Frame -->
+<div class="relative w-[75%] h-[85%] rounded-[100%/120%] overflow-hidden bg-surface-container-highest shadow-xl">
+<!-- User Face Placeholder -->
+<img class="w-full h-full object-cover scale-110" data-alt="A front-facing cinematic selfie of a professional person looking calmly at the camera, neutral expression, high-end studio lighting with a subtle blue rim light, soft focus background, ultra-realistic photography style, 8k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBpX-dMe2HR8jC0QlnycPGRghzUkXl_jVJcQz8R62-VsE1_BYbU4Qh7sl2ogGDKjsv6wJaDaaOJyhjOOFJdV1GGnMhGOahSDk0c_OhZZLmjTTloYFS3ZTQAvgy5RZJ1v4ArKcQfBZOgRIxy9p-W_Sx0y4Pn9z_cV91l56pUW3Hbp2C0sCILweUBfB-Wsd9qpcXoBpxMGPVYx-PLXCRw1fiy5rJBNZ13zqVmDAbSNdpAVWvt_tF2WxJqNCNn1kJ51d10ffgm8X4faU"/>
+<!-- Scanning Scanning Line Animation -->
+<div class="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent shadow-[0_0_15px_rgba(66,0,146,0.8)] opacity-0" id="scan-line"></div>
+<!-- Vignette Overlay -->
+<div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(19,27,46,0.3)] pointer-events-none"></div>
+</div>
+<!-- Focus Corners Decor -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-primary/40 rounded-tl-lg"></div>
+<div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-primary/40 rounded-tr-lg"></div>
+<div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-primary/40 rounded-bl-lg"></div>
+<div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-primary/40 rounded-br-lg"></div>
+</div>
+</div>
+</div>
+<!-- Status Indicators -->
+<div class="mt-stack-md flex justify-center items-center gap-base">
+<div class="flex items-center gap-base px-stack-sm py-1.5 rounded-full bg-surface-container text-primary transition-all duration-300" id="status-badge">
+<span class="material-symbols-outlined text-[18px] animate-spin" style="animation-duration: 3s;">sync</span>
+<span class="font-label-md text-label-md">Buscando rostro...</span>
+</div>
+</div>
+<!-- Tips Section -->
+<div class="mt-stack-lg grid grid-cols-3 gap-gutter">
+<div class="flex flex-col items-center gap-base text-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">light_mode</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Buena luz</span>
+</div>
+<div class="flex flex-col items-center gap-base text-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">visibility</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sin gafas</span>
+</div>
+<div class="flex flex-col items-center gap-base text-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">face_6</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Descubierto</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-stack-lg mb-stack-md">
+<button class="w-full h-14 bg-primary text-on-primary rounded-full font-label-md text-label-md flex items-center justify-center gap-stack-sm shadow-md active:scale-[0.98] transition-transform opacity-50 pointer-events-none" id="capture-btn">
+<span class="material-symbols-outlined">photo_camera</span>
+            Tomar foto
+        </button>
+</div>
+</div>
+<script>
+    (function() {
+        const ring = document.getElementById('progress-ring');
+        const badge = document.getElementById('status-badge');
+        const btn = document.getElementById('capture-btn');
+        const scanLine = document.getElementById('scan-line');
+        const circumference = 301.59;
+        
+        let progress = 0;
+        
+        // Simple simulation of facial detection logic
+        const simulateScanning = () => {
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    completeScan();
+                }
+                
+                const offset = circumference - (progress / 100) * circumference;
+                ring.style.strokeDashoffset = offset;
+                
+                // Show scan line once detection "starts"
+                if (progress > 10) {
+                    scanLine.style.opacity = '1';
+                    scanLine.animate([
+                        { top: '0%' },
+                        { top: '100%' }
+                    ], {
+                        duration: 2000,
+                        iterations: Infinity
+                    });
+                }
+            }, 400);
+        };
+
+        const completeScan = () => {
+            badge.classList.remove('bg-surface-container', 'text-primary');
+            badge.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+            badge.innerHTML = `
+                <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                <span class="font-label-md text-label-md">Rostro detectado</span>
+            `;
+            
+            btn.classList.remove('opacity-50', 'pointer-events-none');
+            btn.classList.add('hover:shadow-lg');
+            
+            // Success haptic-like pulse
+            ring.classList.add('text-on-tertiary-container');
+            scanLine.style.display = 'none';
+        };
+
+        // Delay start for feeling of hardware activation
+        setTimeout(simulateScanning, 1000);
+        
+        btn.addEventListener('click', () => {
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Capturando...';
+            setTimeout(() => {
+                alert('¡Validación exitosa! Tu identidad ha sido confirmada.');
+            }, 800);
+        });
+    })();
+</script></main></body></html>

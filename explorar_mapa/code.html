@@ -1,0 +1,180 @@
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;overflow-x:hidden;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-error-container":"#93000a","on-secondary-container":"#642e00","surface-dim":"#d2d9f4","surface-tint":"#703fc8","on-secondary-fixed":"#311300","primary-container":"#5a24b1","tertiary-fixed-dim":"#2de0a1","on-secondary-fixed-variant":"#723600","primary-fixed-dim":"#d3bbff","surface":"#faf8ff","inverse-surface":"#283044","on-background":"#131b2e","primary":"#420092","on-tertiary-fixed-variant":"#005237","on-tertiary-fixed":"#002114","secondary-container":"#fd8a30","on-secondary":"#ffffff","secondary":"#964900","secondary-fixed-dim":"#ffb787","background":"#faf8ff","outline":"#7b7485","error-container":"#ffdad6","on-primary":"#ffffff","inverse-on-surface":"#eef0ff","on-primary-fixed-variant":"#5821af","tertiary":"#003b27","on-primary-fixed":"#250059","on-primary-container":"#c7aaff","surface-container":"#eaedff","surface-container-highest":"#dae2fd","secondary-fixed":"#ffdcc7","on-tertiary":"#ffffff","tertiary-container":"#005439","primary-fixed":"#ebddff","error":"#ba1a1a","surface-container-low":"#f2f3ff","tertiary-fixed":"#57febc","surface-bright":"#faf8ff","surface-variant":"#dae2fd","on-surface":"#131b2e","surface-container-lowest":"#ffffff","outline-variant":"#ccc3d5","on-surface-variant":"#4a4453","inverse-primary":"#d3bbff","surface-container-high":"#e2e7ff","on-error":"#ffffff","on-tertiary-container":"#00d294"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"base":"8px","margin-mobile":"16px","stack-lg":"48px","stack-md":"24px","margin-desktop":"64px","stack-sm":"12px","gutter":"24px","container-max":"1280px"},"fontFamily":{"label-md":["Inter"],"headline-lg-mobile":["Hanken Grotesk"],"body-sm":["Inter"],"headline-md":["Hanken Grotesk"],"headline-lg":["Hanken Grotesk"],"body-lg":["Inter"],"body-md":["Inter"],"display-lg":["Hanken Grotesk"],"label-sm":["Inter"]},"fontSize":{"label-md":["14px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"600"}],"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"display-lg":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}]}}}}</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background pt-safe pb-safe"><main class="relative w-full"><div class="flex flex-col w-full relative overflow-hidden" style="height: 100dvh;">
+<!-- Stylized Map Background -->
+<div class="absolute inset-0 w-full h-full z-0" data-location="Malasaña, Madrid, Spain" style="">
+<!-- Overlay to tint map into brand colors -->
+<div class="absolute inset-0 bg-primary/5 pointer-events-none backdrop-hue-rotate-15"></div>
+</div>
+<!-- Interactive Map Markers (Simulated) -->
+<div class="absolute inset-0 z-10 pointer-events-none">
+<!-- Marker 1: Inactive -->
+<button class="absolute pointer-events-auto transition-transform active:scale-95" style="top: 30%; left: 25%;">
+<div class="bg-surface-container-lowest shadow-md px-3 py-1.5 rounded-full flex items-center justify-center">
+<span class="font-label-md text-on-surface text-label-md">€45/h</span>
+</div>
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-surface-container-lowest mx-auto -mt-0.5"></div>
+</button>
+<!-- Marker 2: Selected -->
+<button class="absolute pointer-events-auto transition-all scale-110 z-20" id="active-marker" style="top: 45%; left: 55%;">
+<div class="bg-primary shadow-xl px-4 py-2 rounded-full flex items-center justify-center animate-bounce">
+<span class="font-label-md text-on-primary text-label-md">€180/d</span>
+</div>
+<div class="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-primary mx-auto -mt-0.5"></div>
+</button>
+<!-- Marker 3: Inactive -->
+<button class="absolute pointer-events-auto transition-transform active:scale-95" style="top: 60%; left: 35%;">
+<div class="bg-surface-container-lowest shadow-md px-3 py-1.5 rounded-full flex items-center justify-center">
+<span class="font-label-md text-on-surface text-label-md">€60/h</span>
+</div>
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-surface-container-lowest mx-auto -mt-0.5"></div>
+</button>
+</div>
+<!-- Top Search Overlay -->
+<div class="absolute top-4 left-0 right-0 px-margin-mobile z-30">
+<div class="bg-surface-container-lowest shadow-lg rounded-full h-14 flex items-center px-4 gap-3">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant active:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1 flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-primary">Cerca de ti</span>
+<span class="font-body-md text-body-md text-on-surface truncate">Malasaña, Madrid</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant active:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Bottom UI Controls -->
+<div class="absolute bottom-4 left-0 right-0 z-30 flex flex-col gap-4 pointer-events-none">
+<!-- FABs -->
+<div class="flex justify-between items-end px-margin-mobile pointer-events-none">
+<button class="pointer-events-auto bg-surface-container-lowest text-on-surface shadow-md h-12 px-6 rounded-full flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+<span class="font-label-md text-label-md">Lista</span>
+</button>
+<button class="pointer-events-auto bg-surface-container-lowest text-on-surface shadow-md w-12 h-12 rounded-full flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px]">my_location</span>
+</button>
+</div>
+<!-- Property Carousel -->
+<div class="flex overflow-x-auto snap-x snap-mandatory gap-4 px-margin-mobile no-scrollbar pointer-events-auto pb-4" id="carousel">
+<!-- Card 1 (Active) -->
+<div class="snap-center shrink-0 w-[85vw] max-w-[340px] bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden flex flex-row h-32">
+<div class="w-32 h-full">
+<img class="w-full h-full object-cover" data-alt="A sun-drenched industrial kitchen with stainless steel appliances, marble countertops, and warm wooden accents in a trendy Madrid neighborhood. Soft morning light streams through large windows, creating a premium and professional culinary atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtSP8CABYTpPpkDNEeq3Ejix53wgv9SkIizHdKLx4_yLQXTaskECctVfmnwWY9yOTdcpxBd5O0JSXYDef5EYTE4qmHFZpaYTW60pmJm46PkELldVL2eVvHmgP34t-TANMmMer2-iO09E_W3SZrLyz-NTY8Nas7o2ZGDNRbbKmXDMWtcRGy8fi5dH1-xd0tPrBiknJIpMdH-Dh4i4gjMpxQQNk3mJehdeXnx5CK404tceOrr1e2RECGcQ1s3JYdlGXpGpzHsW8ZNig"/>
+</div>
+<div class="flex-1 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Kitchen Lab Malasaña</h3>
+<div class="flex items-center gap-0.5 text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.9</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Estudio Culinario • 45m²</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-primary">€180<span class="font-body-sm text-on-surface-variant">/día</span></span>
+<span class="material-symbols-outlined text-primary">favorite</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-center shrink-0 w-[85vw] max-w-[340px] bg-surface-container-lowest/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden flex flex-row h-32 opacity-80 scale-95 transition-all">
+<div class="w-32 h-full">
+<img class="w-full h-full object-cover" data-alt="A minimalist white-walled art gallery with high ceilings, exposed brick details, and professional track lighting. The space is empty and clean, ready for an exhibition or creative pop-up event in a chic urban district." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3hV_fWuWEt-jp66TbArDWqYC0asG2D075rOWZGi3kIIZBaSfDe3zo-9MhDD8N02d9VNlredoJpQdJQ5fVNarfQGLM9qLZ_eEEL27y8YrZc5KpQSHNmsArHZku3R0j0bsmctLjC6alBx5JNcxkbswFDFbyCKooDv0iJZnzswId8KRUP03RHBRg_rRyNWfAJwkqjWXToVabv7wjY2mCqcTwJ4WHcE9-n-GyL3TZE0346YjFfVuYyTTgB97hQnqPAggNC1PmQbbhIf0"/>
+</div>
+<div class="flex-1 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">The Gallery Space</h3>
+<div class="flex items-center gap-0.5 text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.7</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Showroom • 80m²</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-primary">€45<span class="font-body-sm text-on-surface-variant">/hora</span></span>
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-center shrink-0 w-[85vw] max-w-[340px] bg-surface-container-lowest/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden flex flex-row h-32 opacity-80 scale-95 transition-all">
+<div class="w-32 h-full">
+<img class="w-full h-full object-cover" data-alt="A modern rooftop terrace with lounge seating, lush green plants in terracotta pots, and a stunning view of the Madrid skyline at dusk. The lighting is warm and inviting, perfect for a professional networking event or sunset launch party." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHH6vzVP8hWx_DuCiG124AxbwJrDqbm5rCLRUbzyYJL8zv_vv3UvJV7flL0vkDFtDqIy7LIK2jDtKdzxG5C-swP3Bapp2ILHZPaLW-6iqUeJ1VsubK1zw9S0ZqIL3qQZJXa2RMXH-qH8fmYyy0qkdFVseYmsYKVKdJDRiouVuRZCQ0mWkym-4s230tVMSayqdyKa82jUZiESM1mFlkPpFpj3VUvx-A_xnbdz4WTV-EZdJJpR7-445Pw3P9vJBe8_VIvpFCKAbHsCM"/>
+</div>
+<div class="flex-1 p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1">Terraza Gran Vía</h3>
+<div class="flex items-center gap-0.5 text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">5.0</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Evento • 120m²</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-primary">€350<span class="font-body-sm text-on-surface-variant">/día</span></span>
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    const carousel = document.getElementById('carousel');
+    const cards = carousel.querySelectorAll('div[class*="snap-center"]');
+    
+    carousel.addEventListener('scroll', () => {
+      const scrollPosition = carousel.scrollLeft;
+      const cardWidth = cards[0].offsetWidth + 16; // width + gap
+      
+      cards.forEach((card, index) => {
+        const distance = Math.abs(scrollPosition - (index * cardWidth));
+        const threshold = cardWidth / 2;
+        
+        if (distance < threshold) {
+          card.classList.remove('opacity-80', 'scale-95', 'bg-surface-container-lowest/90', 'backdrop-blur-sm');
+          card.classList.add('opacity-100', 'scale-100', 'bg-surface-container-lowest', 'shadow-xl');
+        } else {
+          card.classList.add('opacity-80', 'scale-95', 'bg-surface-container-lowest/90', 'backdrop-blur-sm');
+          card.classList.remove('opacity-100', 'scale-100', 'bg-surface-container-lowest', 'shadow-xl');
+        }
+      });
+    });
+
+    // Touch feedback for map markers
+    document.querySelectorAll('button[class*="absolute pointer-events-auto"]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Reset others
+        document.querySelectorAll('button[class*="absolute pointer-events-auto"]').forEach(b => {
+          b.classList.remove('scale-110', 'z-20');
+          const inner = b.querySelector('div');
+          inner.className = "bg-surface-container-lowest shadow-md px-3 py-1.5 rounded-full flex items-center justify-center";
+          inner.querySelector('span').className = "font-label-md text-on-surface text-label-md";
+          const arrow = b.querySelector('div:last-child');
+          arrow.className = "w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-surface-container-lowest mx-auto -mt-0.5";
+          inner.classList.remove('animate-bounce');
+        });
+
+        // Set active
+        this.classList.add('scale-110', 'z-20');
+        const activeInner = this.querySelector('div');
+        activeInner.className = "bg-primary shadow-xl px-4 py-2 rounded-full flex items-center justify-center animate-bounce";
+        activeInner.querySelector('span').className = "font-label-md text-on-primary text-label-md";
+        const activeArrow = this.querySelector('div:last-child');
+        activeArrow.className = "w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-primary mx-auto -mt-0.5";
+      });
+    });
+  </script>
+</div></main></body></html>

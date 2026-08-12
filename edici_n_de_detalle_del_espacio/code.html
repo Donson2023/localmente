@@ -1,0 +1,197 @@
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-primary-container': '#c7aaff', 'surface-container-lowest': '#ffffff', 'surface-bright': '#faf8ff', 'error': '#ba1a1a', 'surface-variant': '#dae2fd', 'surface-container-highest': '#dae2fd', 'on-surface': '#131b2e', 'on-secondary-fixed': '#311300', 'tertiary': '#003b27', 'on-tertiary-fixed-variant': '#005237', 'secondary-fixed': '#ffdcc7', 'on-error': '#ffffff', 'on-primary-fixed-variant': '#5821af', 'background': '#faf8ff', 'on-secondary': '#ffffff', 'on-primary': '#ffffff', 'error-container': '#ffdad6', 'secondary': '#964900', 'on-tertiary-fixed': '#002114', 'surface-container': '#eaedff', 'outline': '#7b7485', 'inverse-on-surface': '#eef0ff', 'surface-container-low': '#f2f3ff', 'surface-tint': '#703fc8', 'secondary-container': '#fd8a30', 'on-secondary-container': '#642e00', 'inverse-primary': '#d3bbff', 'surface-dim': '#d2d9f4', 'surface': '#faf8ff', 'on-secondary-fixed-variant': '#723600', 'on-error-container': '#93000a', 'secondary-fixed-dim': '#ffb787', 'primary': '#420092', 'tertiary-container': '#005439', 'primary-fixed': '#ebddff', 'on-primary-fixed': '#250059', 'tertiary-fixed-dim': '#2de0a1', 'surface-container-high': '#e2e7ff', 'on-tertiary': '#ffffff', 'on-background': '#131b2e', 'primary-container': '#5a24b1', 'outline-variant': '#ccc3d5', 'on-surface-variant': '#4a4453', 'inverse-surface': '#283044', 'tertiary-fixed': '#57febc', 'primary-fixed-dim': '#d3bbff' }, borderRadius: { 'DEFAULT': '1rem', 'lg': '2rem', 'xl': '3rem', 'full': '9999px' }, spacing: { 'stack-sm': '12px', 'base': '8px', 'stack-md': '24px', 'stack-lg': '48px', 'margin-mobile': '16px', 'margin-desktop': '64px', 'gutter': '24px', 'container-max': '1280px' }, fontFamily: { 'label-md': ['Inter'], 'headline-lg': ['Hanken Grotesk'], 'headline-md': ['Hanken Grotesk'], 'headline-lg-mobile': ['Hanken Grotesk'], 'body-sm': ['Inter'], 'label-sm': ['Inter'], 'body-lg': ['Inter'], 'body-md': ['Inter'], 'display-lg': ['Hanken Grotesk'] } } } }</script><style>@layer base { .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } body { overscroll-behavior: none; } }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-4"><button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-on-surface">arrow_back</span></button><h1 class="font-headline-md text-headline-md">Detalle De Propiedad</h1></div><button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-on-surface">more_vert</span></button></div></header><main class="pt-16 min-h-screen bg-surface px-margin-mobile"><div class="flex flex-col w-full pb-32">
+<!-- Photo Gallery Section -->
+<section class="flex flex-col gap-stack-sm mb-stack-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Fotos del Espacio</h2>
+<span class="font-label-sm text-label-sm text-primary">4 / 10</span>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile no-scrollbar">
+<!-- Add Photo Button -->
+<button class="flex-shrink-0 w-32 aspect-[3/4] bg-surface-container-high rounded-xl flex flex-col items-center justify-center gap-2 text-primary hover:bg-surface-container-highest transition-colors group">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<span class="font-label-sm text-label-sm">Añadir</span>
+</button>
+<!-- Photo Cards -->
+<div class="relative flex-shrink-0 w-48 aspect-[3/4] rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A bright, high-ceiling industrial loft with polished concrete floors, large windows with natural light, and minimalist white furniture. The space features lush green plants and a warm, inviting professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsmfIFwTTE--Ci2FJ0HQt0XDm0af8E5_8kpbnTsLQ-IpX8NGFA-NAENTf-3EiT5QyUBmnkr2Viv44jW3VcrlUZyjVtfriINqgG1BJj9VJT57jDi_NVu4dh-WQjx6TgtRdDkPxuRZ33Z-v6puP4a0kw5z0w2_bW_uDvM9sXXJ4WL7gtu9_C6hiUAegFKaF77r_6t655QckOTltczmmMqBG-N1Ob1-31OQtW_XkjH1OCaiFFuGpqx1WlEXPyaetsIy_diCuHOnKUtLQ"/>
+<div class="absolute top-2 right-2 flex gap-1">
+<button class="w-8 h-8 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center text-error shadow-sm">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-on-surface/60 to-transparent">
+<span class="font-label-sm text-label-sm text-surface">Principal</span>
+</div>
+</div>
+<div class="relative flex-shrink-0 w-48 aspect-[3/4] rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Detail shot of a modern meeting area in a creative studio, featuring a wooden table, ergonomic chairs, and a designer pendant light. Soft morning sunlight creates long shadows on the floor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx0uwCv0gGuNF_mbIs5agrup23UD5pnePwecfw1YBnS2IZdK16dF3bW_h7xqlp5xbe1RhAutfPi1EYBmpq54afo6w4RD6SmvCsGp5ACdlAcSMMStiwCt5JdCasIyfVva54phBfNuBoLNAleCG7rgv4z5Uyo0b0DNyDwIQJoVrH4lde3mOb0heBBVxNc2hevx9VCmc3AIRbPNumWJ61wSk6otQY2esWVfoSDA3CPoihgX_Lo7drIEXLUB9EhOKLMldPHf2FIO5oXvk"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</button>
+</div>
+<div class="relative flex-shrink-0 w-48 aspect-[3/4] rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Kitchenette and lounge area of a premium coworking space with a high-end espresso machine, marble countertop, and soft velvet seating in teal blue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASw44amMTtB4b5YX-wDXfGLOzi_t1HH3eHOK4TjNCCDobsMBR-SazxGeqs8TUO0ZJUFwXEfFR99m6cB-GJSj2xhbF0joWdWrIz75s8p-mpn6cmBtEp8ScaZrPv5sv8moxxAv9AX0cLwLSdl6jngXchARP6SOlcaHIk2SU_I80VUPX3rRMRXAB9iPRJWc3EZP9X3BpHiua_beqQx8cmwuhiRSEQYdHwMZLvuNaz3mVAuNvVzuuDlMP4gjTNFOsqMaxOf0gVNvMCC1c"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Basic Info -->
+<section class="flex flex-col gap-stack-md mb-stack-lg">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-outline px-1">Título del Anuncio</label>
+<input class="w-full h-14 px-4 rounded-xl bg-surface-container-low text-on-surface font-body-md focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="The Creative Loft"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-outline px-1">Descripción Detallada</label>
+<textarea class="w-full p-4 rounded-xl bg-surface-container-low text-on-surface font-body-md min-h-[120px] focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">Espacio diáfano de 120m2 ideal para producciones audiovisuales, eventos corporativos o pop-up stores de diseño. Incluye techos altos y excelente iluminación natural.</textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-outline px-1">Categoría</label>
+<div class="relative">
+<select class="w-full h-14 pl-4 pr-10 rounded-xl bg-surface-container-low text-on-surface font-body-md appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>Studio / Creativo</option>
+<option>Retail / Pop-up</option>
+<option>Gastro / Eventos</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-4 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-outline px-1">Superficie (m²)</label>
+<input class="w-full h-14 px-4 rounded-xl bg-surface-container-low text-on-surface font-body-md focus:outline-none focus:ring-2 focus:ring-primary/20" type="number" value="120"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Location -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Ubicación</h2>
+<button class="text-primary font-label-md hover:underline">Editar</button>
+</div>
+<div class="relative rounded-xl overflow-hidden shadow-md">
+<div class="w-full h-40 bg-cover bg-center" data-location="Poblenou, Barcelona" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApHp4aNkRPrep898yg4mGKKYQS55IklTD89egFnnV0Zrb9Hm8BOPbH7UGImKgbtkde3n5sa1oNyyyNZmT2i3LFx8uKT7BKItWHMobV6X6K5ziTv76IMMMyWyx9clIeqAodQY8RXjOD1notnMOj9Y97nts8VzOrLegbT2XaLEeo4Nyxv9fy9iUuMFARGmLjOg6IrqaHQ2_gU0Va2ecrQsJ1QsundEQp7uLJWdcm8eseK9_uuj6T9julj8XT52aEFsYxvf4k5KVCzBo')"></div>
+<div class="absolute bottom-3 left-3 right-3 p-3 bg-surface/90 backdrop-blur-md rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">Carrer de Pere IV, 128, Poblenou, Barcelona</span>
+</div>
+</div>
+</section>
+<!-- Pricing & Status -->
+<section class="flex flex-col gap-stack-md mb-stack-lg">
+<div class="p-6 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md">Estado del Espacio</span>
+<span class="font-body-sm text-body-sm opacity-90">Visible para todos los usuarios</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-on-primary-container/30 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="font-label-md text-label-md">Precio por Hora</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-20 h-10 text-right font-headline-md bg-transparent border-b-2 border-primary/20 focus:border-primary focus:outline-none" type="text" value="45"/>
+<span class="font-label-md text-label-md">€</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-label-md text-label-md">Precio por Día</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-20 h-10 text-right font-headline-md bg-transparent border-b-2 border-primary/20 focus:border-primary focus:outline-none" type="text" value="320"/>
+<span class="font-label-md text-label-md">€</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Amenities -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Amenidades</h2>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center gap-3 p-4 rounded-xl bg-primary text-on-primary transition-all duration-200" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-on-primary'); this.classList.toggle('bg-surface-container-low');">
+<span class="material-symbols-outlined">wifi</span>
+<span class="font-label-md text-label-md">WiFi Alta Vel.</span>
+</button>
+<button class="flex items-center gap-3 p-4 rounded-xl bg-primary text-on-primary transition-all duration-200" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-on-primary'); this.classList.toggle('bg-surface-container-low');">
+<span class="material-symbols-outlined">ac_unit</span>
+<span class="font-label-md text-label-md">Climatización</span>
+</button>
+<button class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low transition-all duration-200" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-on-primary'); this.classList.toggle('bg-surface-container-low');">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-md text-label-md">Mobiliario</span>
+</button>
+<button class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low transition-all duration-200" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-on-primary'); this.classList.toggle('bg-surface-container-low');">
+<span class="material-symbols-outlined">coffee</span>
+<span class="font-label-md text-label-md">Zona Café</span>
+</button>
+<button class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low transition-all duration-200" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-on-primary'); this.classList.toggle('bg-surface-container-low');">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-label-md text-label-md">Seguridad 24/7</span>
+</button>
+<button class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low transition-all duration-200" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('text-on-primary'); this.classList.toggle('bg-surface-container-low');">
+<span class="material-symbols-outlined">electric_bolt</span>
+<span class="font-label-md text-label-md">Tomas Trifás.</span>
+</button>
+</div>
+</section>
+<!-- Floating Actions -->
+<div class="fixed bottom-0 left-0 right-0 p-margin-mobile bg-surface/80 backdrop-blur-xl flex flex-col gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-40">
+<button class="w-full h-14 bg-secondary-container text-on-secondary-container rounded-full font-label-md flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">save</span>
+            Guardar Cambios
+        </button>
+<button class="w-full h-12 bg-transparent text-primary rounded-full font-label-md flex items-center justify-center gap-2 hover:bg-primary/5">
+<span class="material-symbols-outlined">visibility</span>
+            Vista Previa del Anuncio
+        </button>
+</div>
+</div>
+<script>
+    // Particle effect on save button click for a "moment of delight"
+    document.querySelector('button.bg-secondary-container').addEventListener('click', function(e) {
+        const button = e.currentTarget;
+        const rect = button.getBoundingClientRect();
+        
+        for(let i = 0; i < 8; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'absolute w-2 h-2 rounded-full bg-secondary pointer-events-none';
+            particle.style.left = (e.clientX - rect.left) + 'px';
+            particle.style.top = (e.clientY - rect.top) + 'px';
+            
+            button.appendChild(particle);
+            
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 50 + Math.random() * 50;
+            const tx = Math.cos(angle) * velocity;
+            const ty = Math.sin(angle) * velocity;
+            
+            particle.animate([
+                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
+            ], {
+                duration: 600,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            }).onfinish = () => particle.remove();
+        }
+    });
+</script></main></body></html>
