@@ -115,7 +115,7 @@ function addSearchEnhancements() {
 function setFurnishing(value) { searchState.furnishing=value; if (active==='discover') render(); else { document.querySelectorAll('[data-furnishing]').forEach(choice=>choice.classList.toggle('selected',choice.dataset.furnishing===value)); toast(value==='furnished'?'Mostrando espacios amoblados':'Mostrando espacios sin amoblar'); } }
 function openSearchPicker(kind) {
   const options = {
-    location:['Bogotá, Colombia','Chapinero, Bogotá','Usaquén, Bogotá','Teusaquillo, Bogotá'],
+    location:cityLabels,
     type:['Cualquier categoría','Gastro','Retail','Oficinas','Salud','Belleza','Talleres'],
     dates:['Agregar fechas','Hoy','Esta semana','Este fin de semana']
   }[kind];
@@ -130,28 +130,38 @@ function applySearchChoice(kind, value) {
   if (field) field.querySelector('strong').textContent=value;
   toast(`${value} seleccionado`);
 }
+const cityCenters = {
+  'Bogotá, Colombia':[4.711,-74.072], 'Medellín, Colombia':[6.244,-75.581], 'Cali, Colombia':[3.452,-76.532], 'Barranquilla, Colombia':[10.968,-74.781], 'Cartagena, Colombia':[10.391,-75.479], 'Bucaramanga, Colombia':[7.119,-73.122], 'Pereira, Colombia':[4.814,-75.694], 'Manizales, Colombia':[5.068,-75.517], 'Santa Marta, Colombia':[11.241,-74.211], 'Ibagué, Colombia':[4.438,-75.232]
+};
+const cityLabels = Object.keys(cityCenters);
+const mapSpaceTemplates = [
+  { name:'Local Gastro de barrio', detail:'Gastro · Amoblado', price:45000, unit:'hora' },
+  { name:'Salón comercial abierto', detail:'Retail · Sin amoblar', price:180000, unit:'día' },
+  { name:'Garaje con potencial', detail:'Potencial · Garaje', price:250000, unit:'semana' },
+  { name:'Jardín frontal tipo galería', detail:'Potencial · Exterior', price:320000, unit:'quincena' },
+  { name:'Oficina flexible', detail:'Oficina · Amoblado', price:900000, unit:'mes' }
+];
+function normalizeCity(value) { const found=cityLabels.find(city=>value.toLowerCase().includes(city.split(',')[0].toLowerCase())); return found||'Bogotá, Colombia'; }
+function citySpaces(city) { const center=cityCenters[city]||cityCenters['Bogotá, Colombia']; const cityName=city.split(',')[0]; let seed=[...city].reduce((sum,char)=>((sum*31)+char.charCodeAt(0))%997,17); const random=()=>{seed=(seed*9301+49297)%233280; return seed/233280;}; return mapSpaceTemplates.map((template,index)=>({ position:[center[0]+((random()-.5)*.065),center[1]+((random()-.5)*.085)], name:`${template.name} ${cityName}`, detail:`${template.detail} · ${index===2?'Entrada independiente':'Disponible temporalmente'}`, price:template.price, unit:template.unit, selected:index===1 })); }
+function formatMapPrice(value) { return `$${new Intl.NumberFormat('es-CO').format(value)}`; }
 function initRealMap() {
   const panel = document.querySelector('.map-panel');
   if (!panel || typeof L === 'undefined') return;
   panel.querySelectorAll('.pin').forEach(pin => pin.style.display='none');
   panel.querySelectorAll('.real-map-canvas').forEach(node => node.remove());
   panel.insertAdjacentHTML('afterbegin', '<div id="real-map-canvas" class="real-map-canvas"></div>');
-  const map = L.map('real-map-canvas', { zoomControl:true }).setView([4.65, -74.08], 13);
+  const city=normalizeCity(searchState.location); const center=cityCenters[city];
+  const map = L.map('real-map-canvas', { zoomControl:true }).setView(center, 13);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'© OpenStreetMap contributors' }).addTo(map);
-  const markerData = [
-    { position:[4.648, -74.062], price:'$45.000/hora', name:'Kitchen Lab Chapinero', detail:'Gastro · Amoblado · 45m²' },
-    { position:[4.668, -74.056], price:'$35.000/hora', name:'Estudio Creativo 7', detail:'Oficina · Amoblado · 32m²' },
-    { position:[4.695, -74.032], price:'$180.000/día', name:'The Arched Gallery', detail:'Retail · Sin amoblar · 80m²', selected:true },
-    { position:[4.704, -74.032], price:'$60.000/hora', name:'Terraza Usaquén', detail:'Evento · Amoblado · 120m²' },
-    { position:[4.625, -74.072], price:'$25.000/hora', name:'Taller La Séptima', detail:'Taller · Sin amoblar · 55m²' }
-  ];
-  markerData.forEach(item => { const icon=L.divIcon({className:'',html:`<div class="real-space-marker ${item.selected?'selected':''}"><img src="logo-localmente.png" alt="Localmente"></div>`,iconSize:[104,104],iconAnchor:[52,94]}); L.marker(item.position,{icon}).addTo(map).bindPopup(`<strong>${item.name}</strong><br>${item.detail}<br><b>${item.price}</b>`); });
+  const markerData = citySpaces(city);
+  markerData.forEach(item => { const icon=L.divIcon({className:'localmente-map-icon',html:`<div class="real-space-marker ${item.selected?'selected':''}"><img src="logo-localmente.png" alt="Localmente"><span class="marker-price">${formatMapPrice(item.price)}/${item.unit}</span></div>`,iconSize:[116,128],iconAnchor:[58,116]}); L.marker(item.position,{icon,zIndexOffset:item.selected?500:100}).addTo(map).bindPopup(`<strong>${item.name}</strong><br>${item.detail}<br><b>${formatMapPrice(item.price)}/${item.unit}</b>`); });
+  const mapList=panel.querySelector('.map-list'); if (mapList) mapList.innerHTML=markerData.map(item=>`<div class="map-card"><div class="map-card-logo"><img src="logo-localmente.png" alt="Localmente"></div><div class="card-content"><h3>${item.name}</h3><div class="card-location">${item.detail}</div><div class="price">${formatMapPrice(item.price)}<small>/${item.unit}</small></div></div></div>`).join('');
   let userMarker;
   const locate = () => { if (!navigator.geolocation) return; navigator.geolocation.getCurrentPosition(pos => { const point=[pos.coords.latitude,pos.coords.longitude]; if (!userMarker) userMarker=L.marker(point,{icon:L.divIcon({className:'',html:'<div class="real-user-marker"></div>',iconSize:[18,18],iconAnchor:[9,9]})}).addTo(map).bindTooltip('Tu ubicación',{direction:'top'}); else userMarker.setLatLng(point); map.setView(point,15); },()=>{}, {enableHighAccuracy:true,timeout:8000,maximumAge:60000}); };
   const search = panel.querySelector('.map-top input');
-  if (search) search.value='Bogotá, Colombia';
+  if (search) search.value=city;
   setTimeout(()=>map.invalidateSize(),200);
   locate();
 }
-function render() { const views={discover, map:mapView, potential, publish, owner, inbox, verify:verifyStart, favorites, filters, booking, confirmation, profile, chatDetail, verifyStart, verifyDoc, verifySelfie, verifyBusiness, verifyStatus}; shell(views[active]()); addSearchEnhancements(); if (active==='discover') document.querySelector('.search-field strong').textContent='Bogotá, Colombia'; if (active==='map') { document.querySelector('.map-top input').value='Bogotá, Colombia'; initRealMap(); } if (active==='profile') document.querySelector('.profile-hero p').textContent='128 reseñas · Bogotá'; }
+function render() { const views={discover, map:mapView, potential, publish, owner, inbox, verify:verifyStart, favorites, filters, booking, confirmation, profile, chatDetail, verifyStart, verifyDoc, verifySelfie, verifyBusiness, verifyStatus}; shell(views[active]()); addSearchEnhancements(); if (active==='discover') document.querySelector('.search-field strong').textContent='Bogotá, Colombia'; if (active==='map') { const mapSearch=document.querySelector('.map-top input'); mapSearch.value=searchState.location; mapSearch.onkeydown=event=>{if(event.key==='Enter'){searchState.location=mapSearch.value;render();}}; initRealMap(); } if (active==='profile') document.querySelector('.profile-hero p').textContent='128 reseñas · Bogotá'; }
 render();

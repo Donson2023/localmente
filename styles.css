@@ -62,6 +62,14 @@ h2 { font-size: 28px; } h3 { font-size: 19px; }
 .search-intent { margin:18px 30px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap; } .search-intent-label { width:100%; color:var(--muted); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; } .intent-option { display:flex; align-items:center; gap:7px; padding:10px 15px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:white; font-weight:700; } .intent-option.selected, .intent-option:hover { color:var(--purple); border-color:#b99de5; background:var(--lavender); } .intent-option .material-symbols-outlined { font-size:19px; } .search-note { margin:12px 30px 0; color:var(--muted); font-size:13px; } .panel-help { margin:-7px 0 0; color:var(--muted); font-size:13px; }
 .search-intent + .search-bar { margin-top:18px; }
 .potential-callout { margin-top:34px; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:24px; border:1px solid #d8c9f4; border-radius:26px; background:linear-gradient(105deg,#f5efff,#fff8ef); }
+.localmente-map-icon { background:transparent !important; border:0 !important; }
+.real-space-marker { position:relative; display:grid; place-items:center; width:112px; height:112px; padding:5px; border-radius:50%; background:white; box-shadow:0 6px 16px rgba(44,0,94,.28); }
+.real-space-marker img { width:82px; height:82px; object-fit:contain; }
+.real-space-marker .marker-price { position:absolute; left:50%; bottom:-16px; transform:translateX(-50%); padding:5px 8px; border-radius:99px; color:var(--purple); background:white; box-shadow:0 3px 10px rgba(44,0,94,.2); white-space:nowrap; font-size:10px; font-weight:800; }
+.real-space-marker.selected { box-shadow:0 0 0 4px var(--orange),0 8px 18px rgba(44,0,94,.3); }
+.real-space-marker.selected .marker-price { color:#311300; background:var(--orange); }
+.map-card-logo { width:82px; display:grid; place-items:center; background:#faf8ff; }
+.map-card-logo img { width:62px; height:62px; object-fit:contain; }
 .potential-callout h2 { margin-bottom:6px; }
 .potential-callout p:not(.eyebrow) { max-width:720px; margin:0; color:var(--muted); line-height:1.55; }
 .results-note { margin:6px 0 0; color:var(--muted); font-size:13px; }
