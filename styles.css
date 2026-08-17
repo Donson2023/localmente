@@ -104,6 +104,44 @@ h2 { font-size: 28px; } h3 { font-size: 19px; }
 .detail-price-list { display:grid; gap:10px; margin-top:20px; padding-top:15px; border-top:1px solid var(--line); }
 .detail-price-list div { display:flex; justify-content:space-between; color:var(--muted); }
 .detail-price-list strong { color:var(--purple); }
+.reservation-heading { margin:20px 0 22px; }
+.reservation-heading h1 { margin:8px 0; }
+.reservation-heading p:not(.eyebrow) { margin:0; color:var(--muted); }
+.reservation-step { padding:9px 14px; border-radius:99px; color:var(--purple); background:var(--lavender); font-weight:700; }
+.reservation-layout, .payment-layout { display:grid; grid-template-columns:1.3fr .8fr; gap:22px; align-items:start; }
+.reservation-form, .reservation-summary, .payment-card, .payment-summary, .checkout-card { padding:28px; }
+.reservation-space-head { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+.reservation-space-head img { width:90px; height:72px; border-radius:14px; object-fit:cover; }
+.reservation-space-head h2 { font-size:22px; }
+.reservation-space-head p { margin:4px 0 0; color:var(--muted); font-size:13px; }
+.reservation-note { display:flex; gap:8px; margin-top:20px; padding:14px; border-radius:15px; color:var(--muted); background:var(--lavender); font-size:12px; line-height:1.45; }
+.reservation-note .material-symbols-outlined { color:var(--purple); font-size:19px; }
+.reservation-summary { position:sticky; top:20px; }
+.reservation-summary h2 { margin-bottom:15px; }
+.reservation-summary small, .payment-summary small { color:var(--muted); line-height:1.45; }
+.checkout-view { max-width:900px; }
+.checkout-progress { display:flex; justify-content:center; gap:60px; margin:22px 0; color:#b9afc8; }
+.checkout-progress span { position:relative; width:30px; height:30px; display:grid; place-items:center; border-radius:50%; background:#eeeaf5; font-weight:700; }
+.checkout-progress span:not(:last-child)::after { content:''; position:absolute; left:30px; width:60px; height:2px; background:#eeeaf5; }
+.checkout-progress span.done, .checkout-progress span.active { color:white; background:var(--purple); }
+.checkout-progress span.done::after { background:var(--purple); }
+.checkout-card h1, .payment-card h1 { margin:8px 0 10px; }
+.checkout-copy { color:var(--muted); line-height:1.55; }
+.secure-note { display:flex; align-items:center; justify-content:center; gap:4px; margin-top:15px; color:var(--muted); }
+.secure-note .material-symbols-outlined { font-size:15px; }
+.checkout-space-reference { margin-top:16px; text-align:center; color:var(--muted); }
+.payment-methods { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:22px 0; }
+.payment-method { display:grid; justify-items:center; gap:5px; padding:14px 8px; border:1px solid var(--line); border-radius:15px; color:var(--muted); background:white; font-weight:700; }
+.payment-method.selected { color:var(--purple); border-color:#b99de5; background:var(--lavender); }
+.payment-method .material-symbols-outlined { font-size:25px; }
+.payment-provider { margin:20px 0; padding:26px; text-align:center; border-radius:18px; color:var(--purple); background:var(--lavender); }
+.payment-provider .material-symbols-outlined { font-size:38px; }
+.payment-provider p { color:var(--muted); }
+.payment-summary { overflow:hidden; }
+.payment-summary img { width:100%; height:170px; margin:-28px -28px 18px; width:calc(100% + 56px); object-fit:cover; }
+.payment-summary h2 { font-size:21px; }
+.payment-summary p { color:var(--muted); }
+.reservation-confirmation { max-width:760px; }
 .potential-callout h2 { margin-bottom:6px; }
 .potential-callout p:not(.eyebrow) { max-width:720px; margin:0; color:var(--muted); line-height:1.55; }
 .results-note { margin:6px 0 0; color:var(--muted); font-size:13px; }
@@ -216,3 +254,4 @@ h2 { font-size: 28px; } h3 { font-size: 19px; }
 @media (max-width: 900px) { .publish-layout { grid-template-columns:1fr; } .publish-questionnaire, .owner-details, .modifications-panel { grid-column:auto; } .modification-grid { grid-template-columns:1fr; } }
 @media (max-width: 680px) { .filter-grid, .booking-layout { grid-template-columns:1fr; } .filter-grid .panel:last-child { grid-column:auto; } .choice-grid, .choice-grid.compact { grid-template-columns:repeat(2,1fr); } .booking-cover { min-height:240px; } .stats-row { padding:16px 8px; } .potential-callout, .potential-hero { align-items:flex-start; flex-direction:column; } .potential-callout .secondary-btn { width:100%; } .potential-hero-icon { align-self:flex-end; font-size:90px; margin-top:-45px; } .publish-heading { align-items:flex-start; flex-direction:column; gap:14px; } .form-grid { grid-template-columns:1fr; } .full-field { grid-column:auto; } .publish-actions { justify-content:stretch; flex-direction:column-reverse; } .publish-actions button { width:100%; } .intervention-row { align-items:flex-start; flex-direction:column; gap:8px; } .intervention-row select { width:100%; } .time-grid, .special-fields, .summary-columns { grid-template-columns:1fr; } .special-fields label:nth-last-child(-n+3) { grid-column:auto; } .photo-record { align-items:stretch; flex-direction:column; } .pricing-result { align-items:stretch; flex-direction:column; } .pricing-owner-value { min-width:0; padding:12px 0 0; border-left:0; border-top:1px solid rgba(255,255,255,.25); } }
 @media (max-width: 680px) { .map-filter-bar { top:90px; } .map-results-count { top:143px; } .map-selected-card { left:12px; right:12px; bottom:12px; } .map-selected-card > img { width:100px; min-height:155px; } .map-selected-content { padding:13px; } .space-detail-layout { grid-template-columns:1fr; } .space-detail-cover { min-height:260px; } }
+@media (max-width: 680px) { .reservation-layout, .payment-layout { grid-template-columns:1fr; } .reservation-summary { position:static; } .payment-methods { gap:6px; } .payment-method { font-size:11px; } .checkout-progress { gap:35px; } .checkout-progress span:not(:last-child)::after { width:35px; } }
