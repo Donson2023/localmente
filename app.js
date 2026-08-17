@@ -6,17 +6,19 @@ const photos = {
   studio: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80',
   cafe: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80',
   showroom: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80',
+  emptyGallery: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80',
+  emptyShell: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
   garage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80',
   windowRoom: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
   garden: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80'
 };
 const listings = [
   { title:'Kitchen Lab Chapinero', location:'Chapinero, Bogotá', price:'$45.000', unit:'/hora', tags:['Gastro','Amoblado'], furnishing:'furnished', image:photos.kitchen, badge:'Disponible hoy' },
-  { title:'The Arched Gallery', location:'Usaquén, Bogotá', price:'$180.000', unit:'/día', tags:['Retail','Sin amoblar'], furnishing:'unfurnished', image:photos.gallery, badge:'Nuevo', orange:true },
+  { title:'The Arched Gallery', location:'Usaquén, Bogotá', price:'$180.000', unit:'/día', tags:['Retail','Vacío'], furnishing:'unfurnished', image:photos.emptyGallery, badge:'Local vacío', orange:true },
   { title:'The Creative Loft', location:'Teusaquillo, Bogotá', price:'$450.000', unit:'/día', tags:['Oficina','Amoblado'], furnishing:'furnished', image:photos.loft, badge:'Premium' },
   { title:'Estudio 93', location:'Chapinero, Bogotá', price:'$35.000', unit:'/hora', tags:['Oficina','Amoblado'], furnishing:'furnished', image:photos.studio, badge:'Disponible hoy' },
   { title:'Café Patio Norte', location:'Usaquén, Bogotá', price:'$280.000', unit:'/día', tags:['Gastro','Amoblado'], furnishing:'furnished', image:photos.cafe, badge:'Favorito' },
-  { title:'Showroom La 72', location:'Barrios Unidos, Bogotá', price:'$600.000', unit:'/semana', tags:['Retail','Sin amoblar'], furnishing:'unfurnished', image:photos.showroom, badge:'Flexible', orange:true }
+  { title:'Salón en obra blanca La 72', location:'Barrios Unidos, Bogotá', price:'$600.000', unit:'/semana', tags:['Retail','Sin muebles'], furnishing:'unfurnished', image:photos.emptyShell, badge:'Listo para adaptar', orange:true }
 ];
 const potentialSpaces = [
   { title:'Garaje con vitrina a la calle', location:'Galerías, Teusaquillo · Bogotá', price:'$25.000', unit:'/hora', tags:['Garaje','Sin amoblar'], image:photos.garage, badge:'Con potencial', description:'Entrada independiente para showroom, taller o punto de entrega.' },
