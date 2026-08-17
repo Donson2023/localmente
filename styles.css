@@ -104,6 +104,8 @@ h2 { font-size: 28px; } h3 { font-size: 19px; }
 .full-field { grid-column:1 / -1; }
 .form-field textarea { width:100%; resize:vertical; border:1px solid var(--line); padding:13px 14px; border-radius:14px; outline-color:var(--purple); font:inherit; }
 .publish-questionnaire { grid-column:1 / -1; }
+.owner-details { grid-column:1 / -1; }
+.owner-consent { margin-top:10px; padding-bottom:0; border-bottom:0; }
 .question { padding:17px 0; border-top:1px solid var(--line); }
 .question-options { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
 .question-options label { padding:10px 13px; border:1px solid var(--line); border-radius:99px; color:var(--muted); background:white; font-size:13px; }
