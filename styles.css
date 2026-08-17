@@ -64,6 +64,7 @@ h2 { font-size: 28px; } h3 { font-size: 19px; }
 .potential-callout { margin-top:34px; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:24px; border:1px solid #d8c9f4; border-radius:26px; background:linear-gradient(105deg,#f5efff,#fff8ef); }
 .potential-callout h2 { margin-bottom:6px; }
 .potential-callout p:not(.eyebrow) { max-width:720px; margin:0; color:var(--muted); line-height:1.55; }
+.results-note { margin:6px 0 0; color:var(--muted); font-size:13px; }
 .potential-hero { min-height:250px; padding:34px; display:flex; align-items:center; justify-content:space-between; gap:30px; border-radius:32px; color:white; background:linear-gradient(110deg,#3c008c,#7d42c7 62%,#d98bcb); box-shadow:var(--shadow); }
 .potential-hero h1 { max-width:680px; margin:8px 0 12px; }
 .potential-hero p:not(.eyebrow) { max-width:670px; margin:0; color:#eee5ff; line-height:1.6; font-size:17px; }
