@@ -38,7 +38,7 @@ h2 { font-size: 28px; } h3 { font-size: 19px; }
 .hero-copy { max-width: 650px; padding: 8px 0 8px 10px; } .hero h1 { max-width: 620px; line-height: 1.08; } .hero p { max-width: 550px; font-size: 17px; line-height: 1.6; color: #eee5ff; } .hero-copy .primary-btn { margin-top: 10px; }
 .hero-mark { width: 170px; height: 170px; opacity: .9; object-fit: contain; filter: drop-shadow(0 14px 20px rgba(26,0,80,.3)); }
 .search-bar { margin-top: -30px; position: relative; margin-left: 30px; margin-right: 30px; padding: 12px; background: white; box-shadow: var(--shadow); border-radius: 999px; display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; gap: 2px; }
-.search-field { padding: 8px 22px; border-right: 1px solid var(--line); } .search-field span { display:block; color:var(--muted); font-size:12px; font-weight:700; margin-bottom:5px; } .search-field strong { font-size:14px; }
+.search-field { padding: 8px 22px; border-right: 1px solid var(--line); } .search-field span { display:block; color:var(--muted); font-size:12px; font-weight:700; margin-bottom:5px; } .search-field strong { font-size:14px; } .search-field input { width:100%; border:0; outline:0; color:var(--ink); background:transparent; font-size:14px; }
 .search-go { width: 50px; height: 50px; border-radius: 50%; color:white; background: var(--orange-dark); display:grid; place-items:center; }
 .section-head { display:flex; justify-content:space-between; align-items:center; margin: 42px 0 17px; }
 .link-btn { color: var(--purple); background: transparent; font-weight: 700; }
