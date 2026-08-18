@@ -1,7 +1,7 @@
 #!/bin/bash
 
-APP_DIR="/Users/mac/localmente-webapp"
-PORT="3000"
+APP_DIR="/Users/mac/Projects/localmente"
+PORT="8000"
 
 cd "$APP_DIR" || exit 1
 
