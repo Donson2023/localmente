@@ -1,6 +1,7 @@
 #!/bin/bash
 
-APP_DIR="/Users/mac/Projects/localmente"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_DIR="$SCRIPT_DIR"
 PORT="8000"
 
 cd "$APP_DIR" || exit 1
