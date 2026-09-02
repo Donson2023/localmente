@@ -81,12 +81,24 @@ create table if not exists public.retention_offers (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.notifications (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  type text not null default 'general',
+  title text not null,
+  body text not null,
+  reservation_id text references public.reservations(id) on delete cascade,
+  read boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
 alter table public.profiles enable row level security;
 alter table public.spaces enable row level security;
 alter table public.reservations enable row level security;
 alter table public.space_follows enable row level security;
 alter table public.space_offers enable row level security;
 alter table public.retention_offers enable row level security;
+alter table public.notifications enable row level security;
 
 grant select, insert, update on public.profiles to authenticated;
 grant select, insert, update on public.spaces to authenticated;
@@ -95,6 +107,7 @@ grant select, insert, update on public.reservations to authenticated;
 grant select, insert, delete on public.space_follows to authenticated;
 grant select, insert, update on public.space_offers to authenticated;
 grant select, insert, update on public.retention_offers to authenticated;
+grant select, update on public.notifications to authenticated;
 
 drop policy if exists "Users can read their profile" on public.profiles;
 create policy "Users can read their profile" on public.profiles for select to authenticated using ((select auth.uid()) = id);
@@ -139,6 +152,25 @@ drop policy if exists "Participants can read retention offers" on public.retenti
 create policy "Participants can read retention offers" on public.retention_offers for select to authenticated using ((select auth.uid()) = owner_id or (select auth.uid()) = entrepreneur_id);
 drop policy if exists "Participants can respond retention offers" on public.retention_offers;
 create policy "Participants can respond retention offers" on public.retention_offers for update to authenticated using ((select auth.uid()) = owner_id or (select auth.uid()) = entrepreneur_id) with check ((select auth.uid()) = owner_id or (select auth.uid()) = entrepreneur_id);
+
+drop policy if exists "Users can read their notifications" on public.notifications;
+create policy "Users can read their notifications" on public.notifications for select to authenticated using ((select auth.uid()) = user_id);
+drop policy if exists "Users can mark notifications read" on public.notifications;
+create policy "Users can mark notifications read" on public.notifications for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+
+create or replace function public.notify_owner_new_reservation()
+returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  if new.owner_id is not null then
+    insert into public.notifications (user_id, type, title, body, reservation_id)
+    values (new.owner_id, 'reservation', 'Nueva solicitud de reserva', 'Un emprendedor solicitó tu espacio. Revisa la solicitud en tu panel.', new.id);
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists notify_owner_new_reservation on public.reservations;
+create trigger notify_owner_new_reservation after insert on public.reservations for each row execute procedure public.notify_owner_new_reservation();
 
 create or replace function public.sync_space_reservation_dates()
 returns trigger language plpgsql security definer set search_path = public as $$
