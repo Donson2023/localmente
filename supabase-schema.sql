@@ -115,6 +115,8 @@ drop policy if exists "Users can create their profile" on public.profiles;
 create policy "Users can create their profile" on public.profiles for insert to authenticated with check ((select auth.uid()) = id);
 drop policy if exists "Users can update their profile" on public.profiles;
 create policy "Users can update their profile" on public.profiles for update to authenticated using ((select auth.uid()) = id) with check ((select auth.uid()) = id);
+drop policy if exists "Owners can read reservation participant profiles" on public.profiles;
+create policy "Owners can read reservation participant profiles" on public.profiles for select to authenticated using (exists (select 1 from public.reservations r where r.user_id = profiles.id and r.owner_id = (select auth.uid())));
 
 drop policy if exists "Anyone authenticated can read spaces" on public.spaces;
 create policy "Anyone authenticated can read spaces" on public.spaces for select to authenticated using (true);
