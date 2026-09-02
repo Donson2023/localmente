@@ -90,6 +90,7 @@ alter table public.retention_offers enable row level security;
 
 grant select, insert, update on public.profiles to authenticated;
 grant select, insert, update on public.spaces to authenticated;
+grant select on public.spaces to anon;
 grant select, insert, update on public.reservations to authenticated;
 grant select, insert, delete on public.space_follows to authenticated;
 grant select, insert, update on public.space_offers to authenticated;
@@ -104,6 +105,8 @@ create policy "Users can update their profile" on public.profiles for update to 
 
 drop policy if exists "Anyone authenticated can read spaces" on public.spaces;
 create policy "Anyone authenticated can read spaces" on public.spaces for select to authenticated using (true);
+drop policy if exists "Public can read available spaces" on public.spaces;
+create policy "Public can read available spaces" on public.spaces for select to anon using (status = 'available');
 drop policy if exists "Owners can create spaces" on public.spaces;
 create policy "Owners can create spaces" on public.spaces for insert to authenticated with check ((select auth.uid()) = owner_id);
 drop policy if exists "Owners can update spaces" on public.spaces;
