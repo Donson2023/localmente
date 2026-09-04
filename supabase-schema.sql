@@ -44,6 +44,10 @@ create table if not exists public.reservations (
 
 alter table public.reservations add column if not exists start_date date;
 alter table public.reservations add column if not exists end_date date;
+alter table public.reservations add column if not exists payment_status text not null default 'unpaid';
+alter table public.reservations add column if not exists payment_reference text unique;
+alter table public.reservations add column if not exists payment_transaction_id text;
+alter table public.reservations add column if not exists paid_at timestamptz;
 
 create table if not exists public.space_follows (
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -177,11 +181,14 @@ create trigger notify_owner_new_reservation after insert on public.reservations 
 create or replace function public.sync_space_reservation_dates()
 returns trigger language plpgsql security definer set search_path = public as $$
 begin
-  update public.spaces
-  set reserved_from = new.start_date,
-      reserved_until = new.end_date,
-      status = case when new.end_date is not null and new.end_date >= current_date then 'reserved' else 'available' end
-  where id = new.space_id;
+  -- A reservation only blocks the space after payment approval.
+  if new.status in ('confirmed', 'accepted') and coalesce(new.payment_status, 'unpaid') = 'paid' then
+    update public.spaces
+    set reserved_from = new.start_date,
+        reserved_until = new.end_date,
+        status = case when new.end_date is not null and new.end_date >= current_date then 'reserved' else 'available' end
+    where id = new.space_id;
+  end if;
   return new;
 end;
 $$;

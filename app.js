@@ -620,3 +620,65 @@ function activateDeadLinkFixes() {
 const renderWithDeadLinkFixes=render;
 render=function(){ renderWithDeadLinkFixes(); activateDeadLinkFixes(); };
 render();
+
+let paymentPending=false;
+async function startWompiCheckout() {
+  if(!supabaseClient) { toast('Configura Supabase antes de iniciar un pago real'); return; }
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  if(!session) { active='profile'; render(); toast('Inicia sesión para continuar'); return; }
+  const total=reservationTotal();
+  const endpoint=`${supabaseConfig.functionsUrl||`${supabaseConfig.url}/functions/v1`}/create-payment`;
+  const response=await fetch(endpoint,{method:'POST',headers:{Authorization:`Bearer ${session.access_token}`,apikey:supabaseConfig.anonKey,'Content-Type':'application/json'},body:JSON.stringify({spaceId:reservationSpace().id,quantity:Number(reservationState.quantity)||1,unit:reservationState.unit,startDate:reservationState.start||null,endDate:reservationState.end||null,total:total.total})});
+  const payload=await response.json().catch(()=>({}));
+  if(!response.ok) { toast(payload.error||'No se pudo iniciar el pago'); return; }
+  reservationState.id=payload.reservationId;
+  reservationState.paymentStatus='pending';
+  paymentPending=true;
+  if(typeof WidgetCheckout==='undefined') { toast('No se cargó el checkout de Wompi'); return; }
+  const checkout=new WidgetCheckout({currency:payload.currency,amountInCents:payload.amountInCents,reference:payload.reference,publicKey:payload.publicKey,signature:{integrity:payload.integrity},redirectUrl:payload.redirectUrl,customerData:{email:reservationState.guestEmail,fullName:reservationState.guestName}});
+  checkout.open(()=>{ active='reservationDone'; render(); toast('Pago enviado. Esperamos confirmación segura.'); });
+}
+const baseReservationDoneWithPayment=reservationDone;
+reservationDone=function(){
+  const html=baseReservationDoneWithPayment();
+  if(paymentPending) return html.replace('Solicitud guardada','Pago en validación').replace('¡Tu reserva está en camino!','Tu pago fue enviado').replace('El propietario recibirá tu solicitud y tu cuenta de emprendedor conservará este registro.','La reserva se confirmará automáticamente cuando Wompi confirme el pago.');
+  if(reservationState.paymentStatus==='paid') return html.replace('Solicitud enviada','Pago confirmado').replace('¡Tu reserva está en camino!','¡Tu reserva está confirmada!').replace('El propietario recibirá tu solicitud y te enviaremos una confirmación a','El propietario recibió tu solicitud y enviamos la confirmación a');
+  if(reservationState.paymentStatus==='failed') return html.replace('Solicitud enviada','Pago no aprobado').replace('¡Tu reserva está en camino!','No se pudo confirmar el pago').replace('El propietario recibirá tu solicitud y te enviaremos una confirmación a','Puedes volver a explorar y comenzar una nueva solicitud desde');
+  return html;
+};
+const renderWithPayments=render;
+render=function(){
+  renderWithPayments();
+  if(active==='payment') {
+    const card=document.querySelector('.payment-card');
+    card?.querySelector('.payment-methods')?.remove();
+    card?.querySelectorAll('.form-field').forEach(field=>field.remove());
+    if(card&&!card.querySelector('.wompi-note')) {
+      const note=document.createElement('div');
+      note.className='payment-provider wompi-note';
+      note.innerHTML='<span class="material-symbols-outlined">verified_user</span><h3>Pago seguro con Wompi</h3><p>Se abrirá el checkout de Wompi para elegir tarjeta, PSE o Nequi. Localmente no guarda datos de tarjeta.</p>';
+      card.querySelector('h1')?.after(note);
+    }
+    const button=document.querySelector('.payment-card .primary-btn');
+    if(button) button.onclick=()=>{ if(paymentFormIsComplete()) startWompiCheckout().catch(error=>toast(error.message||'No se pudo iniciar el pago')); };
+  }
+};
+paymentFormIsComplete=function(){
+  const consent=document.querySelector('.payment-card .check-row input')?.checked;
+  if(!consent){toast('Acepta las condiciones y autoriza el cobro');return false;}
+  return true;
+};
+
+async function refreshPaymentResult(){
+  const reservationId=new URLSearchParams(location.search).get('reservation');
+  if(!reservationId||!supabaseClient) return;
+  const {data}=await supabaseClient.from('reservations').select('payment_status,status').eq('id',reservationId).maybeSingle();
+  if(data?.payment_status==='paid') { paymentPending=false; reservationState.paymentStatus='paid'; toast('Pago confirmado. Tu reserva quedó confirmada.'); }
+  else if(data?.payment_status==='failed') { paymentPending=false; reservationState.paymentStatus='failed'; toast('Wompi reportó que el pago no fue aprobado.'); }
+  render();
+}
+if(new URLSearchParams(location.search).get('screen')==='paymentResult') {
+  active='reservationDone';
+  refreshPaymentResult().catch(()=>{});
+}
+render();
