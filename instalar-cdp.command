@@ -2,12 +2,20 @@
 
 set -e
 
-NODE_DIR="/Applications/ChatGPT.app/Contents/Resources/cua_node/bin"
+NODE_DIR="${NODE_DIR:-}"
+if [ -z "$NODE_DIR" ] || [ ! -x "$NODE_DIR/npx" ]; then
+  NODE_DIR="$(dirname "$(command -v npx 2>/dev/null || true)")"
+fi
 NPX="$NODE_DIR/npx"
-CODEX="/Users/mac/.local/bin/codex"
+CODEX="$(command -v codex 2>/dev/null || true)"
 
 if [ ! -x "$NPX" ]; then
-  echo "No encuentro Node.js incluido en ChatGPT. Instala Node.js LTS desde https://nodejs.org/"
+  echo "No encuentro npx. Instala Node.js LTS desde https://nodejs.org/"
+  exit 1
+fi
+
+if [ -z "$CODEX" ]; then
+  echo "No encuentro el comando codex en este dispositivo. Instálalo o registra el MCP manualmente."
   exit 1
 fi
 

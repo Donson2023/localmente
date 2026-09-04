@@ -7,13 +7,15 @@ Prototipo vertical navegable para el marketplace de espacios comerciales. El pil
 La rama canónica del proyecto es `main`. Antes de abrir la webapp, comprueba la versión con:
 
 ```bash
-cd /Users/mac/Projects/localmente
+cd localmente
 git fetch origin
 git status --short --branch
 git log -1 --oneline --decorate
 ```
 
-La webapp local debe servirse desde esta carpeta (`/Users/mac/Projects/localmente`), no desde una copia paralela. Las ramas de trabajo se integran en `main` antes de considerarse la última versión.
+La webapp local debe servirse desde la carpeta clonada del repositorio, no desde una copia paralela. Las ramas de trabajo se integran en `main` antes de considerarse la última versión.
+
+Para ejecutar el proyecto desde otro dispositivo, consulta [`PORTABILIDAD.md`](PORTABILIDAD.md). Cada push a `main` también deja lista la publicación estática mediante GitHub Pages, una vez activada en la configuración del repositorio.
 
 Cada avance importante se registra con fecha y hora en [`HITOS.md`](HITOS.md) y se guarda en un commit de `main`. Para registrar el siguiente hito:
 
@@ -24,14 +26,14 @@ Cada avance importante se registra con fecha y hora en [`HITOS.md`](HITOS.md) y 
 ## Ejecutar localmente
 
 ```bash
-cd /Users/mac/Projects/localmente
+cd localmente
 python3 -m http.server 8000
 ```
 
 Si `python3` no está disponible en macOS, usa:
 
 ```bash
-cd /Users/mac/Projects/localmente
+cd localmente
 ruby -run -e httpd . -p 8000
 ```
 

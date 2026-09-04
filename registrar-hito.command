@@ -1,7 +1,8 @@
 #!/bin/zsh
 set -e
 
-APP_DIR="/Users/mac/Projects/localmente"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_DIR="$SCRIPT_DIR"
 cd "$APP_DIR"
 
 if [[ -z "$1" ]]; then

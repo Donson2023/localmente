@@ -3,7 +3,7 @@
 ## Último avance
 
 - El piloto comercial se definió para Yopal, Casanare, con ubicación inicial, mapa y publicación de espacios orientados a esa ciudad.
-- Proyecto movido desde `Downloads` a `/Users/mac/Projects/localmente`.
+- Proyecto consolidado en el repositorio Git; las rutas de ejecución son relativas a la carpeta clonada.
 - Se creó un índice navegable en `index.html`.
 - El flujo está organizado como app vertical: entrada, descubrimiento, búsqueda, filtros/mapa, perfil, chat, reserva, pago y confirmación.
 - Se conservaron las pantallas originales y las ramas del propietario: onboarding, verificación, dashboard y edición del espacio.
