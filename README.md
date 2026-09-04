@@ -1,6 +1,6 @@
 # Localmente
 
-Prototipo vertical navegable para el marketplace de espacios comerciales.
+Prototipo vertical navegable para el marketplace de espacios comerciales. El piloto inicial está enfocado en Yopal, Casanare; Bogotá queda como catálogo secundario.
 
 ## Ejecutar localmente
 

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-APP_DIR="/Users/mac/localmente-webapp"
-PORT="3000"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_DIR="$SCRIPT_DIR"
+PORT="8000"
 CDP_PORT="9222"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PROFILE_DIR="/tmp/localmente-chrome-profile"
