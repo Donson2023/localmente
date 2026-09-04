@@ -582,3 +582,41 @@ const previousRegisterEntrepreneurFromReservation=registerEntrepreneurFromReserv
 registerEntrepreneurFromReservation=async function(){ if(!accountFormIsComplete()) return; return previousRegisterEntrepreneurFromReservation(); };
 const previousRenderForReservationValidation=render;
 render=function(){ previousRenderForReservationValidation(); activateReservationValidation(); };
+
+function registerPotentialInterest() {
+  const item=potentialSpaces[selectedPotentialIndex]||potentialSpaces[0];
+  const interests=readStoredJSON('localmente.potentialInterests.v1',[]);
+  if(!interests.some(entry=>entry.title===item.title)) interests.push({title:item.title,location:item.location,createdAt:new Date().toISOString()});
+  localStorage.setItem('localmente.potentialInterests.v1',JSON.stringify(interests));
+  toast('Interés registrado. Te contactaremos para activar este espacio.');
+}
+
+function activateDeadLinkFixes() {
+  if(active==='map') {
+    const back=document.querySelector('.map-top > .material-symbols-outlined');
+    if(back) { back.setAttribute('role','button'); back.setAttribute('tabindex','0'); back.setAttribute('aria-label','Volver al inicio'); back.onclick=()=>{active='discover';render();}; }
+    const listButton=document.querySelector('.map-panel > .secondary-btn');
+    if(listButton) listButton.onclick=()=>{active='discover';render();};
+    document.querySelectorAll('.map-panel .pin').forEach((pin,index)=>{ pin.textContent=['$45.000/h','$180.000/día','$60.000/h'][index]||pin.textContent; });
+  }
+  if(active==='inbox') {
+    const threads=document.querySelectorAll('.thread-list .thread');
+    threads.forEach(thread=>{thread.onclick=()=>{active='chatDetail';render();};});
+  }
+  if(active==='owner') {
+    document.querySelectorAll('.owner-dashboard .section-head').forEach(head=>{
+      if(head.querySelector('h2')?.textContent.trim()==='Mis espacios') {
+        const button=head.querySelector('button');
+        if(button) button.onclick=()=>head.nextElementSibling?.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  }
+  if(active==='potentialDetail') {
+    const button=document.querySelector('.potential-detail-card .primary-btn');
+    if(button) button.onclick=registerPotentialInterest;
+  }
+}
+
+const renderWithDeadLinkFixes=render;
+render=function(){ renderWithDeadLinkFixes(); activateDeadLinkFixes(); };
+render();
