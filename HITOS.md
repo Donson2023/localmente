@@ -1,0 +1,7 @@
+# Hitos de Localmente
+
+Registro cronológico de avances publicados en `main`.
+
+| Fecha y hora | Commit | Hito |
+|---|---|---|
+| 2026-09-04 09:09 -05 | c67805e | Corrección de rutas y acciones de navegación muertas. |

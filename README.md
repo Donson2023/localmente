@@ -15,6 +15,12 @@ git log -1 --oneline --decorate
 
 La webapp local debe servirse desde esta carpeta (`/Users/mac/Projects/localmente`), no desde una copia paralela. Las ramas de trabajo se integran en `main` antes de considerarse la última versión.
 
+Cada avance importante se registra con fecha y hora en [`HITOS.md`](HITOS.md) y se guarda en un commit de `main`. Para registrar el siguiente hito:
+
+```bash
+./registrar-hito.command "Descripción breve del avance"
+```
+
 ## Ejecutar localmente
 
 ```bash
