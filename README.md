@@ -2,6 +2,19 @@
 
 Prototipo vertical navegable para el marketplace de espacios comerciales. El piloto inicial está enfocado en Yopal, Casanare; Bogotá queda como catálogo secundario.
 
+## Fuente de verdad y versión
+
+La rama canónica del proyecto es `main`. Antes de abrir la webapp, comprueba la versión con:
+
+```bash
+cd /Users/mac/Projects/localmente
+git fetch origin
+git status --short --branch
+git log -1 --oneline --decorate
+```
+
+La webapp local debe servirse desde esta carpeta (`/Users/mac/Projects/localmente`), no desde una copia paralela. Las ramas de trabajo se integran en `main` antes de considerarse la última versión.
+
 ## Ejecutar localmente
 
 ```bash
